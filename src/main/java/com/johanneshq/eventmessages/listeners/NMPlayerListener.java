@@ -9,12 +9,12 @@ import nl.chimpgamer.networkmanager.api.event.events.player.PlayerDisconnectEven
 public class NMPlayerListener {
 
     public void onLogin(AsyncPlayerLoginEvent event) {
-        if (EventMessages.eventMessages.settings.booleanMap.get("notifyJoin"))
+        if (EventMessages.eventMessages.settings.getBoolean("settings.notifyJoin"))
             Utils.broadCastMessage(event.getPlayer(), Messages.LOGIN);
     }
 
     public void onLogout(PlayerDisconnectEvent event) {
-        if (EventMessages.eventMessages.settings.booleanMap.get("notifyQuit"))
+        if (EventMessages.eventMessages.settings.getBoolean("settings.notifyQuit"))
             Utils.broadCastMessage(event.getPlayer(), Messages.QUIT);
     }
 }

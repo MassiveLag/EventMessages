@@ -16,7 +16,7 @@ public class BungeePlayerListener implements Listener {
 
     @EventHandler
     public void onSwitch(ServerSwitchEvent event) {
-        if (!EventMessages.eventMessages.settings.booleanMap.get("notifyServerSwitch"))
+        if (!EventMessages.eventMessages.settings.getBoolean("settings.notifyServerSwitch"))
             return;
 
         ProxiedPlayer proxiedPlayer = event.getPlayer();
