@@ -27,6 +27,7 @@ dependencies {
     compileOnly("io.github.waterfallmc:waterfall-api:1.18-R0.1-SNAPSHOT")
     compileOnly("nl.chimpgamer.networkmanager:api:2.11.1")
 
+    compileOnly("net.kyori:adventure-text-minimessage:4.10.1")
     compileOnly("com.velocitypowered:velocity-api:3.1.0")
 
 }

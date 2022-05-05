@@ -27,7 +27,7 @@ public class BungeePlayerListener implements Listener {
         String from = event.getFrom().getName();
         String to = event.getPlayer().getServer().getInfo().getName();
 
-        Optional<Server> optionalFromServer = Hook.instance.getServer(from);
+        /*Optional<Server> optionalFromServer = Hook.instance.getServer(from);
         Optional<Server> optionalToServer = Hook.instance.getServer(to);
 
         if (optionalFromServer.isPresent())
@@ -37,9 +37,9 @@ public class BungeePlayerListener implements Listener {
             to = optionalToServer.get().getDisplayName();
 
         String finalTo = to;
-        String finalFrom = from;
+        String finalFrom = from;*/
         Hook.instance.getPlayer(proxiedPlayer.getUniqueId()).ifPresent(player -> {
-            Utils.broadCastServerSwitchMessage(player, finalFrom, finalTo, Messages.SERVER_SWITCH);
+            Utils.broadCastServerSwitchMessage(player, from, to, Messages.SERVER_SWITCH);
         });
     }
 }
