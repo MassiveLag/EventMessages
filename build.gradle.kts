@@ -6,7 +6,7 @@ plugins {
 
 
 group = "com.johanneshq"
-version = "1.0-SNAPSHOT"
+version = "1.0-BETA"
 
 repositories {
     mavenCentral()
