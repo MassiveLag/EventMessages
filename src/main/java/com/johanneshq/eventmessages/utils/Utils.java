@@ -1,6 +1,7 @@
 package com.johanneshq.eventmessages.utils;
 
 import nl.chimpgamer.networkmanager.api.models.player.Player;
+import nl.chimpgamer.networkmanager.api.utils.TextUtils;
 
 public class Utils {
 
@@ -9,8 +10,8 @@ public class Utils {
             String optionalMessage = Hook.instance.getMessage(onlinePlayer.getLanguage().getId(), message);
             player.sendMessage(optionalMessage
                     .replace("%playername%", player.getName())
-                    .replace("%nickmame%", player.getNicknameOrUserName())
-                    .replace("%server%", player.getServerDisplay()));
+                    .replace("%displayname%", player.getDisplayName())
+                    .replace("%server%", TextUtils.toLegacy(player.getServerDisplay())));
         });
     }
 
@@ -20,7 +21,7 @@ public class Utils {
             player.sendMessage(optionalMessage
                     .replace("%prevserver%", oldServer)
                     .replace("%playername%", player.getName())
-                    .replace("%nickmame%", player.getNicknameOrUserName())
+                    .replace("%displayname%", player.getDisplayName())
                     .replace("%server%", newServer));
         });
     }

@@ -1,7 +1,7 @@
 #At this moment those placeholders are in the messages supported:
 #
 # %playername%
-# %nickmame%
+# %displayname%
 # %server%
 #
 # on server switch there is one extra placeholder: %prevserver%

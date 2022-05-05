@@ -3,4 +3,4 @@ version: ${version}
 main: com.johanneshq.eventmessages.EventMessages
 description: NetworkManager EventMessages Extension
 authors: [JohannesHQ]
-api-version: 2.9.9
+api-version: 2.11.1
