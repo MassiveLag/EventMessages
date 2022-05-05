@@ -6,6 +6,8 @@ import net.kyori.adventure.text.TextComponent;
 import nl.chimpgamer.networkmanager.api.models.player.Player;
 import nl.chimpgamer.networkmanager.api.utils.TextUtils;
 
+import java.util.Optional;
+
 public class Utils {
 
     /**
@@ -15,8 +17,18 @@ public class Utils {
      */
 
     public static void broadCastMessage(Player player, Messages message) {
+        if (!player.hasPermission("eventmessages.notify.joinquit"))
+            return;
+
+        Optional<Player> optionalPlayer = Hook.instance.getPlayer(player.getUuid());
+        if (optionalPlayer.isEmpty())
+            return;
+
+        //We do not want to send a message if player is vanished.
+        if (optionalPlayer.get().getVanished())
+            return;
+
         EventMessages.get().getScheduler().runDelayed(() -> Hook.instance.getAllCachedPlayers().forEach((uuid, onlinePlayer) -> {
-            System.out.println(uuid);
             String optionalMessage = Hook.instance.getMessage(onlinePlayer.getLanguage().getId(), message);
             TextComponent text = Component.text(optionalMessage
                     .replace("%playername%", player.getName())
@@ -34,6 +46,16 @@ public class Utils {
      * @param message the message
      */
     public static void broadCastServerSwitchMessage(Player player, String oldServer, String newServer, Messages message) {
+        if (!player.hasPermission("eventmessages.notify.serverswitch"))
+            return;
+        Optional<Player> optionalPlayer = Hook.instance.getPlayer(player.getUuid());
+        if (optionalPlayer.isEmpty())
+            return;
+
+        //We do not want to send a message if player is vanished.
+        if (optionalPlayer.get().getVanished())
+            return;
+
         Hook.instance.getAllCachedPlayers().forEach((uuid, onlinePlayer) -> {
             String optionalMessage = Hook.instance.getMessage(onlinePlayer.getLanguage().getId(), message);
             TextComponent text = Component.text(optionalMessage
