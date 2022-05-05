@@ -1,0 +1,12 @@
+#At this moment those placeholders are in the messages supported:
+#
+# %playername%
+# %nickmame%
+# %server%
+#
+# on server switch there is one extra placeholder: %prevserver%
+
+settings:
+  notifyJoin: true
+  notifyQuit: true
+  notifyServerSwitch: true

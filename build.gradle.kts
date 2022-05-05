@@ -1,0 +1,46 @@
+plugins {
+    java
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    kotlin("jvm") version "1.6.10"
+}
+
+
+group = "com.johanneshq"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+
+    maven (url = "https://papermc.io/repo/repository/maven-public/")
+    maven (url = "https://repo.networkmanager.xyz/repository/maven-public/")
+    maven (url = "https://jitpack.io")
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
+
+    compileOnly("com.google.guava:guava:31.0.1-jre")
+    compileOnly("org.jetbrains:annotations:16.0.2")
+    compileOnly("com.github.Carleslc:Simple-YAML:1.7.2")
+
+    //Depencies
+    compileOnly("io.github.waterfallmc:waterfall-api:1.18-R0.1-SNAPSHOT")
+    compileOnly("nl.chimpgamer.networkmanager:api:2.10.8")
+
+    compileOnly("com.velocitypowered:velocity-api:3.1.0")
+
+}
+
+tasks {
+    shadowJar {
+        minimize {
+            enabled = true
+        }
+        archiveFileName.set("${project.rootProject.name}-${project.name}-v${project.version}.jar")
+        destinationDirectory.set(file("$rootDir/output"))
+    }
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
