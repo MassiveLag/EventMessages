@@ -15,8 +15,6 @@ public class Utils {
      */
 
     public static void broadCastMessage(Player player, Messages message) {
-        System.out.println("broadCastMessage = " + message.getKey());
-        System.out.println("playerSize = " + Hook.instance.getAllCachedPlayers().size());
         EventMessages.eventMessages.getScheduler().runDelayed(() -> Hook.instance.getAllCachedPlayers().forEach((uuid, onlinePlayer) -> {
             System.out.println(uuid);
             String optionalMessage = Hook.instance.getMessage(onlinePlayer.getLanguage().getId(), message);
@@ -24,7 +22,6 @@ public class Utils {
                     .replace("%playername%", player.getName())
                     .replace("%displayname%", player.getDisplayName())
                     .replace("%serverdisplay%", TextUtils.toLegacy(player.getServerDisplay())));
-            System.out.println("Sending message to player= " + onlinePlayer.getName());
             onlinePlayer.sendMessage(text);
         }), EventMessages.eventMessages.settings.getLong("settings.delayJoinMessage"));
     }
