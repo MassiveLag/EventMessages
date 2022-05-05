@@ -19,7 +19,7 @@ public class BungeePlayerListener implements Listener {
         if (event.getFrom() == null)
             return;
 
-        if (!EventMessages.eventMessages.settings.getBoolean("settings.notifyServerSwitch"))
+        if (!EventMessages.get().settings.getBoolean("settings.notifyServerSwitch"))
             return;
 
         ProxiedPlayer proxiedPlayer = event.getPlayer();
