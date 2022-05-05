@@ -18,7 +18,7 @@ public class Hook {
     private final NetworkManagerPlugin networkManager;
 
     public Hook() {
-        networkManager = EventMessages.eventMessages.getNetworkManager();
+        networkManager = EventMessages.get().getNetworkManager();
 
         for (Messages value : Messages.values()) {
             insertLanguageMessage(value.getKey(), value.getMessage(), value.getVersion(), value.getPluginName());

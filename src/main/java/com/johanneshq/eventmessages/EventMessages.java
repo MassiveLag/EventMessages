@@ -12,7 +12,7 @@ import nl.chimpgamer.networkmanager.api.utils.PlatformType;
 
 public class EventMessages extends NMExtension {
 
-    public static EventMessages eventMessages;
+    private static EventMessages eventMessages;
 
     public Settings settings = new Settings(this);
 
@@ -38,13 +38,17 @@ public class EventMessages extends NMExtension {
         new Hook();
 
         NMPlayerListener playerListener = new NMPlayerListener();
-        eventMessages.getNetworkManager().getEventBus().subscribe(AsyncPlayerLoginEvent.class, playerListener::onLogin);
-        eventMessages.getNetworkManager().getEventBus().subscribe(PlayerDisconnectEvent.class, playerListener::onLogout);
+        getNetworkManager().getEventBus().subscribe(AsyncPlayerLoginEvent.class, playerListener::onLogin);
+        getNetworkManager().getEventBus().subscribe(PlayerDisconnectEvent.class, playerListener::onLogout);
 
         if (networkManagerPlugin.getPlatformType() == PlatformType.BUNGEECORD) {
             getNetworkManager().registerListener(new BungeePlayerListener());
         } else if (networkManagerPlugin.getPlatformType() == PlatformType.VELOCITY) {
             getNetworkManager().registerListener(new VelocityPlayerListener());
         }
+    }
+
+    public static EventMessages get() {
+        return eventMessages;
     }
 }

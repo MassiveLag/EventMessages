@@ -15,7 +15,7 @@ public class Utils {
      */
 
     public static void broadCastMessage(Player player, Messages message) {
-        EventMessages.eventMessages.getScheduler().runDelayed(() -> Hook.instance.getAllCachedPlayers().forEach((uuid, onlinePlayer) -> {
+        EventMessages.get().getScheduler().runDelayed(() -> Hook.instance.getAllCachedPlayers().forEach((uuid, onlinePlayer) -> {
             System.out.println(uuid);
             String optionalMessage = Hook.instance.getMessage(onlinePlayer.getLanguage().getId(), message);
             TextComponent text = Component.text(optionalMessage
@@ -23,7 +23,7 @@ public class Utils {
                     .replace("%displayname%", player.getDisplayName())
                     .replace("%serverdisplay%", TextUtils.toLegacy(player.getServerDisplay())));
             onlinePlayer.sendMessage(text);
-        }), EventMessages.eventMessages.settings.getLong("settings.delayJoinMessage"));
+        }), EventMessages.get().settings.getLong("settings.delayJoinMessage"));
     }
 
     /**
