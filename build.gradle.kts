@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    compileOnly(kotlin("stdlib"))
 
     compileOnly("com.google.guava:guava:31.0.1-jre")
     compileOnly("org.jetbrains:annotations:16.0.2")
@@ -36,8 +36,17 @@ tasks {
         minimize {
             enabled = true
         }
-        archiveFileName.set("${project.rootProject.name}-${project.name}-v${project.version}.jar")
+        archiveFileName.set("${project.name}-v${project.version}.jar")
         destinationDirectory.set(file("$rootDir/output"))
+
+        val shadedPackage = "nl.chimpgamer.networkmanager.shaded"
+        val libPackage = "nl.chimpgamer.networkmanager.lib"
+
+        //relocate("net.kyori", "$shadedPackage.kyori")
+        relocate("kotlin", "$libPackage.kotlin")
+        relocate("org.simpleyaml", "$libPackage.simpleyaml")
+        relocate("net.kyori", "$shadedPackage.kyori")
+
     }
 }
 
