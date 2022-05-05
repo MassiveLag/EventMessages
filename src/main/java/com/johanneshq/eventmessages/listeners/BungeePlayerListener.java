@@ -16,6 +16,9 @@ public class BungeePlayerListener implements Listener {
 
     @EventHandler
     public void onSwitch(ServerSwitchEvent event) {
+        if (event.getFrom() == null)
+            return;
+
         if (!EventMessages.eventMessages.settings.getBoolean("settings.notifyServerSwitch"))
             return;
 

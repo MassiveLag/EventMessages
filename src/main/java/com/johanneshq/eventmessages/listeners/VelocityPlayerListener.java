@@ -14,10 +14,10 @@ public class VelocityPlayerListener {
 
     @Subscribe
     public void onServerSwitch(ServerConnectedEvent event) {
-        if (!EventMessages.eventMessages.settings.getBoolean("settings.notifyServerSwitch"))
+        if (event.getPreviousServer().isEmpty())
             return;
 
-        if (event.getPreviousServer().isEmpty())
+        if (!EventMessages.eventMessages.settings.getBoolean("settings.notifyServerSwitch"))
             return;
 
         String from = event.getPreviousServer().get().getServerInfo().getName();
