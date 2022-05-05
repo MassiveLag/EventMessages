@@ -3,15 +3,8 @@ package com.johanneshq.eventmessages.utils;
 import com.johanneshq.eventmessages.EventMessages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.scheduler.TaskScheduler;
-import nl.chimpgamer.networkmanager.api.NetworkManagerPlugin;
-import nl.chimpgamer.networkmanager.api.NetworkManagerProvider;
-import nl.chimpgamer.networkmanager.api.Scheduler;
 import nl.chimpgamer.networkmanager.api.models.player.Player;
 import nl.chimpgamer.networkmanager.api.utils.TextUtils;
-
-import java.util.concurrent.CompletableFuture;
 
 public class Utils {
 
@@ -33,7 +26,7 @@ public class Utils {
                     .replace("%serverdisplay%", TextUtils.toLegacy(player.getServerDisplay())));
             System.out.println("Sending message to player= " + onlinePlayer.getName());
             onlinePlayer.sendMessage(text);
-        }), 25);
+        }), EventMessages.eventMessages.settings.getLong("settings.delayJoinMessage"));
     }
 
     /**

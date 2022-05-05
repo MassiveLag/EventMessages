@@ -8,5 +8,6 @@
 
 settings:
   notifyJoin: true
+  delayJoinMessage: 25 #long
   notifyQuit: true
   notifyServerSwitch: true
