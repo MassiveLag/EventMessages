@@ -1,8 +1,8 @@
 package com.johanneshq.eventmessages.listeners;
 
 import com.johanneshq.eventmessages.EventMessages;
-import com.johanneshq.eventmessages.utils.Messages;
 import com.johanneshq.eventmessages.utils.Hook;
+import com.johanneshq.eventmessages.utils.Messages;
 import com.johanneshq.eventmessages.utils.Utils;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
